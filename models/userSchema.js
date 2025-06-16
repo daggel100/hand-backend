@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
   },
   password: {
@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
   },
   adress: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Adress', // Verweis auf das Adressmodell
+    ref: 'Adresse', // Verweis auf das Adressmodell
   }, 
   isAdmin: {
     type: Boolean,

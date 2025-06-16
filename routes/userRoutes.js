@@ -22,6 +22,24 @@ router.get('/users/me', protect, async (req, res) => {
   res.json(req.user);
 });
 
+// Hier mit GET alle User aus Datenbank holen
+router.get('/users', protect, async (req, res) => {
+  try {
+    // Optional: Nur fpr Admins freigeben
+    if (!req.user.isAdmin) {
+      return res.status(402).json({ message: 'Zuggriff verweigert. Nur Admins fürfen alle User sehen.' });
+    }
+    // Alle User mit Adresse abrufen
+    const users = await User.find().populate('adress');
+    res.json(users);
+
+  } catch (error) {
+    res.status(500).json({ message: 'Serverfehler', error: error.message });
+  }  
+});
+
+
+
 // Admin kann andere User zu Admins machen
 // router.patch('/user/:id/make-admin', async (req, res) => {
 //     try {
