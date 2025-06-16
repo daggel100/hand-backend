@@ -13,11 +13,12 @@ export const protect = async (req, res, next) => {
 
     // 2. Order aus dem Authorization-Header lesen (wenn vorhanden)
     // Authorization-Header: Bearer <token
-    if (req.headers.authorization && 
+    else if (req.headers.authorization && 
         req.headers.authorization.startsWith('Bearer')
     ) {
         token = req.headers.authorization.split(' ')[1];
     }
+    
     if (!token) {
         return res.status(401).json({ message: 'Nicht autorisiert, Token fehlt' });
     }

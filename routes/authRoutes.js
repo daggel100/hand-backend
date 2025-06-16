@@ -12,10 +12,16 @@ router.post('/register', async (req, res) => {
         // Beispiel: { nickname: 'JohnDoe', email: '
         const { nickname, email, password, adress } = req.body;
 
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User bereits vorhanden' });
-        }
+        // const existingUser = await User.findOne({ email });
+        // if (existingUser) {
+        //     return res.status(400).json({ message: 'User bereits vorhanden' });
+        // }
+
+        // Prüfen, ob Nickname oder E-Mail schon vergeben sind
+  const existingUser = await User.findOne({ $or: [{ email }, { nickname }] });
+  if (existingUser) {
+    return res.status(400).json({ message: 'E-Mail oder Nickname bereits vergeben' });
+  }
 
          // Prüfen, ob schon ein Admin existiert
         const adminExists = await User.findOne({ isAdmin: true });

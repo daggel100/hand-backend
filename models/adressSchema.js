@@ -9,20 +9,20 @@ const addressSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    strasse: {
+    street: {
         type: String,
         required: true,
     },
-    plz: {
+    zipCode: {
         type: String,
         required: true,
 
     },
-    ort: {
+    city: {
         type: String,
         required: true,
     },
-    ortsteil: {
+    district: {
         type: String,
         required: false,
     },

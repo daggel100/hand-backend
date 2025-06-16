@@ -8,6 +8,7 @@ import  testEmailRoutes from './routes/testEmailRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import verifyRoutes from './routes/verifyRoutes.js';
 import cookieParser from 'cookie-parser';
+import adressRoutes from './routes/adressRoutes.js';
 
 
 dotenv.config();
@@ -53,6 +54,9 @@ app.get('/', (req, res) => {
   res.send('Willkommen im Hand in Hand Backenend!');
 });
 app.use('/api', userRoutes);
+
+// Fügt die Adress-Routen hinzu
+app.use('/api', adressRoutes);
 
 app.use('/api/auth', authRoutes);
 

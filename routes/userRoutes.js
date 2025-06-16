@@ -1,7 +1,7 @@
 
 import express from 'express';
 import User from '../models/userSchema.js';
-import { protect } from '../middelware/authMiddleware.js'; // Assuming you have an auth middleware for protection
+import { protect } from '../middleware/authMiddleware.js'; // Assuming you have an auth middleware for protection
 
 const router = express.Router();
 
