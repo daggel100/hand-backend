@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/user/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate('adresse');
+    const user = await User.findById(req.params.id).populate('adress');
     if (!user) {
       return res.status(404).json({ message: 'User nicht gefunden' });
     }
