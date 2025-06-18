@@ -41,7 +41,7 @@ router.post('/register', async (req, res) => {
         await newUser.save();
 
         // Automatisch eine Verifizierungs-E-Mail senden
-        await sendVerificationEmail(newUser.email, newUser.verificationCode);
+        await sendVerificationEmail(newUser.email, newUser.verificationCode, newUser._id);
 
         // const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 
