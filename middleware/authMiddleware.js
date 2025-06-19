@@ -3,6 +3,11 @@ import jwt from 'jsonwebtoken';
 import User from '../models/userSchema.js'; // Assuming you have a user schema defined
 
 export const protect = async (req, res, next) => {
+
+    // Logging für Debugging
+    console.log(('Cookies:', req.cookies));
+    console.log(('Authorization Header:', req.headers.authorization));
+
     let token = null;
 
     // 1. Token aus Cookie lesen (wenn vorhanden)

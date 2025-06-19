@@ -7,13 +7,17 @@ const router = express.Router();
 
 router.get('/user/:id', async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate('adress');
+    // const user = await User.findById(req.params.id).populate('adress');
     if (!user) {
       return res.status(404).json({ message: 'User nicht gefunden' });
     }
     res.json(user);
+  // } catch (error) {
+  //   res.status(500).json({ message: 'Serverfehler', error: error.message });
+  // }
   } catch (error) {
-    res.status(500).json({ message: 'Serverfehler', error: error.message });
+    console.error('Fehler in /user/:id:', error);
+    res.status(500).json({ message: 'Serverfehler', error: error.message, stack: error.stack });
   }
 });
 
@@ -30,7 +34,8 @@ router.get('/users', protect, async (req, res) => {
       return res.status(402).json({ message: 'Zuggriff verweigert. Nur Admins fürfen alle User sehen.' });
     }
     // Alle User mit Adresse abrufen
-    const users = await User.find().populate('adress');
+    const users = await User.find();
+    // const users = await User.find().populate('adress');
     res.json(users);
 
   } catch (error) {

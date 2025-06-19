@@ -20,8 +20,14 @@ const userSchema = new mongoose.Schema({
     default: false,
   },
   adress: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Adresse', // Verweis auf das Adressmodell
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Adresse', // Verweis auf das Adressmodell
+    firstName: String,
+    lastName: String,
+    street: String,
+    city: String,
+    zipCode: Number,
+    district: String,
   }, 
   isAdmin: {
     type: Boolean,
