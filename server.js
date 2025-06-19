@@ -9,6 +9,7 @@ import userRoutes from './routes/userRoutes.js';
 import verifyRoutes from './routes/verifyRoutes.js';
 import cookieParser from 'cookie-parser';
 import adressRoutes from './routes/adressRoutes.js';
+import publicUserRoutes from './routes/publicUserRoutes.js';
 
 
 dotenv.config();
@@ -65,6 +66,9 @@ app.use('/api/test-email', testEmailRoutes);
 
 // Route für den E-Mail-Verifizierungsprozess im Backend
 app.use('/api', verifyRoutes);
+
+// Öffentliche User-Liste (nur nickname und Stadtteil)
+app.use('/api', publicUserRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server läuft auf http://localhost:${PORT}`);
